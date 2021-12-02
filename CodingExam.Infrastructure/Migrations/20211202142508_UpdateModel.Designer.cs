@@ -3,14 +3,16 @@ using CodingExam.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodingExam.Infrastructure.Migrations
 {
     [DbContext(typeof(CodingExamContext))]
-    partial class CodingExamContextModelSnapshot : ModelSnapshot
+    [Migration("20211202142508_UpdateModel")]
+    partial class UpdateModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

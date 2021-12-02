@@ -1,4 +1,4 @@
-using CodingExam.Domain.Models;
+﻿using CodingExam.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -16,6 +16,7 @@ namespace CodingExam.Infrastructure.Context
         }
 
         public DbSet<Interest> Interests { get; set; }
+        public DbSet<InterestDetails> InterestDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

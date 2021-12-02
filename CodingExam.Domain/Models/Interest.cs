@@ -10,5 +10,10 @@ namespace CodingExam.Domain.Models
         public decimal IncrementalRate { get; set; }
         public int MaturityYears { get; set; }
         public List<InterestDetails> InterestDetails { get; set; }
+
+        public Interest()
+        {
+            InterestDetails = new List<InterestDetails>();
+        }
     }
 }
