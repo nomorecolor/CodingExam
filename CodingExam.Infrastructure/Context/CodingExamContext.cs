@@ -1,6 +1,8 @@
-﻿using CodingExam.Domain.Models;
+using CodingExam.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace CodingExam.Infrastructure.Context
 {
@@ -17,8 +19,9 @@ namespace CodingExam.Infrastructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"))
+            .LogTo(message => Debug.WriteLine(message), new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+            .EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
