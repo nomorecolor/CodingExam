@@ -49,6 +49,14 @@ namespace CodingExam.Infrastructure.Context
                 entity.Property(id => id.InterestRate).IsRequired().HasColumnType("float");
                 entity.Property(id => id.FutureValue).IsRequired().HasColumnType("float");
             });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(u => u.Id);
+
+                entity.Property(u => u.Username).IsRequired().HasColumnType("varchar(50)");
+                entity.Property(u => u.Password).IsRequired();
+            });
         }
     }
 }
