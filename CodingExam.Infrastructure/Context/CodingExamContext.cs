@@ -10,7 +10,7 @@ namespace CodingExam.Infrastructure.Context
     {
         private readonly IConfiguration _config;
 
-        public CodingExamContext(IConfiguration config)
+        public CodingExamContext(IConfiguration config, DbContextOptions options) : base(options)
         {
             _config = config;
         }
@@ -20,9 +20,10 @@ namespace CodingExam.Infrastructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"))
-            .LogTo(message => Debug.WriteLine(message), new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
-            .EnableSensitiveDataLogging();
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"))
+                .LogTo(message => Debug.WriteLine(message), new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+                .EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
