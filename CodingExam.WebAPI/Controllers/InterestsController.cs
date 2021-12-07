@@ -1,7 +1,9 @@
-﻿using CodingExam.Domain.Interfaces;
+﻿using AutoMapper;
+using CodingExam.Domain.Interfaces;
 using CodingExam.Domain.Models;
+using CodingExam.WebAPI.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CodingExam.WebAPI.Controllers
@@ -11,10 +13,12 @@ namespace CodingExam.WebAPI.Controllers
     public class InterestsController : ControllerBase
     {
         private readonly IInterestService _interestService;
+        private readonly IMapper _mapper;
 
-        public InterestsController(IInterestService interestService)
+        public InterestsController(IInterestService interestService, IMapper mapper)
         {
             _interestService = interestService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -22,45 +26,47 @@ namespace CodingExam.WebAPI.Controllers
         {
             var interests = await _interestService.GetAll();
 
-            return Ok(interests);
+            return Ok(_mapper.Map<List<Interest>>(interests));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Interest>> GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var interest = await _interestService.GetById(id);
 
             if (interest == null) return NotFound();
 
-            return Ok(interest);
+            return Ok(_mapper.Map<Interest>(interest));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Interest interest)
+        public async Task<IActionResult> Add(InterestDto interestDto)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            await _interestService.Add(interest);
+            var interest = _mapper.Map<Interest>(interestDto);
 
-            if (interest.Id == 0) return BadRequest();
+            var interestResult = await _interestService.Add(interest);
 
-            return CreatedAtAction(nameof(GetById), interest.Id);
+            if (interestResult == null) return BadRequest();
+
+            return CreatedAtAction("GetById", interestResult.Id);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInterest(int id, Interest interest)
+        public async Task<IActionResult> Edit(int id, InterestDto interestDto)
         {
-            if (id != interest.Id) return BadRequest();
+            if (id != interestDto.Id) return BadRequest();
 
             if (!ModelState.IsValid) return BadRequest();
 
-            await _interestService.Update(interest);
+            await _interestService.Update(_mapper.Map<Interest>(interestDto));
 
-            return Ok(interest);
+            return Ok(interestDto);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteInterest(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var interest = await _interestService.GetById(id);
 

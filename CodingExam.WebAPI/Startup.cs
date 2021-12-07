@@ -24,6 +24,9 @@ namespace CodingExam.WebAPI
         {
             services.AddDbContext<CodingExamContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllers()
                     .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
