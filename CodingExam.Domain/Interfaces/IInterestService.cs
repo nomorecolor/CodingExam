@@ -11,5 +11,6 @@ namespace CodingExam.Domain.Interfaces
         Task<Interest> Add(Interest entity);
         Task<Interest> Update(Interest entity);
         Task<bool> Delete(Interest entity);
+        Task<List<Interest>> Search(int id);
     }
 }

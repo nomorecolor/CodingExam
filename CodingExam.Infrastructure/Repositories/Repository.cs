@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace CodingExam.Infrastructure.Repositories
 {
-    public abstract class Repository<T> : IRepository<T> where T : Entity
+    public class Repository<T> : IRepository<T> where T : Entity
     {
         protected readonly CodingExamContext Db;
 
         protected readonly DbSet<T> DbSet;
 
-        protected Repository(CodingExamContext db)
+        public Repository(CodingExamContext db)
         {
             Db = db;
             DbSet = db.Set<T>();
