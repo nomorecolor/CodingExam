@@ -24,6 +24,17 @@ namespace CodingExam.WebAPI
         {
             services.AddDbContext<CodingExamContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            // Cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowAnyOrigin();
+
+                });
+            });
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -47,6 +58,8 @@ namespace CodingExam.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CodingExam.WebAPI v1"));
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
