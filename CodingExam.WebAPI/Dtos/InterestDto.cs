@@ -30,6 +30,8 @@ namespace CodingExam.WebAPI.Dtos
         [MinLength(1, ErrorMessage = "InterestDetails should not be empty")]
         public List<InterestDetailsDto> InterestDetails { get; set; }
 
+        public UserDto User { get; set; }
+
         public InterestDto()
         {
             InterestDetails = new List<InterestDetailsDto>();

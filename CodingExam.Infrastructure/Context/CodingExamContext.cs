@@ -32,6 +32,7 @@ namespace CodingExam.Infrastructure.Context
             {
                 entity.HasKey(i => i.Id);
                 entity.HasMany(i => i.InterestDetails).WithOne(id => id.Interest);
+                entity.HasOne(i => i.User).WithOne(u => u.Interest);
 
                 entity.Property(i => i.PresentValue).IsRequired().HasColumnType("float");
                 entity.Property(i => i.LowerBoundInterestRate).IsRequired().HasColumnType("float");

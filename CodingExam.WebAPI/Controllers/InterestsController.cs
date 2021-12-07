@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CodingExam.Common;
 using CodingExam.Domain.Interfaces;
 using CodingExam.Domain.Models;
 using CodingExam.WebAPI.Dtos;
@@ -26,7 +27,7 @@ namespace CodingExam.WebAPI.Controllers
         {
             var interests = await _interestService.GetAll();
 
-            return Ok(_mapper.Map<List<Interest>>(interests));
+            return Ok(_mapper.Map<List<InterestDto>>(interests));
         }
 
         [HttpGet("{id}")]
@@ -36,7 +37,7 @@ namespace CodingExam.WebAPI.Controllers
 
             if (interest == null) return NotFound();
 
-            return Ok(_mapper.Map<Interest>(interest));
+            return Ok(_mapper.Map<InterestDto>(interest));
         }
 
         [HttpPost]
