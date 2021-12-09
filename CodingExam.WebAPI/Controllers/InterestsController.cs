@@ -2,6 +2,7 @@
 using CodingExam.Domain.Interfaces;
 using CodingExam.Domain.Models;
 using CodingExam.WebAPI.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CodingExam.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InterestsController : ControllerBase
