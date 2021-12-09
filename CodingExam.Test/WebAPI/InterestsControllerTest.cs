@@ -15,14 +15,16 @@ namespace CodingExam.Test.WebAPI
     public class InterestsControllerTest
     {
         private readonly Mock<IInterestService> _interestServiceMock;
+        private readonly Mock<IUserService> _userServiceMock;
         private readonly Mock<IMapper> _mapperMock;
         private readonly InterestsController _interestsController;
 
         public InterestsControllerTest()
         {
             _interestServiceMock = new Mock<IInterestService>();
+            _userServiceMock = new Mock<IUserService>();
             _mapperMock = new Mock<IMapper>();
-            _interestsController = new InterestsController(_interestServiceMock.Object, _mapperMock.Object);
+            _interestsController = new InterestsController(_interestServiceMock.Object, _userServiceMock.Object, _mapperMock.Object);
         }
 
         [Fact]
@@ -64,7 +66,7 @@ namespace CodingExam.Test.WebAPI
             _interestServiceMock.Setup(x => x.GetById(id)).ReturnsAsync(interest);
             _mapperMock.Setup(x => x.Map<InterestDto>(It.IsAny<Interest>())).Returns(dtoExpected);
 
-            var result = await _interestsController.GetById(id);
+            var result = await _interestsController.GetByUserId(id);
 
             Assert.IsType<OkObjectResult>(result);
         }
@@ -78,7 +80,7 @@ namespace CodingExam.Test.WebAPI
 
             _interestServiceMock.Setup(x => x.GetById(id)).ReturnsAsync((Interest)null);
 
-            var result = await _interestsController.GetById(id);
+            var result = await _interestsController.GetByUserId(id);
 
             Assert.IsType<NotFoundResult>(result);
         }

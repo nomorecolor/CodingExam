@@ -10,6 +10,7 @@ namespace CodingExam.WebAPI.Configurations
         {
             CreateMap<Interest, InterestDto>().ReverseMap();
             CreateMap<InterestDetails, InterestDetailsDto>().ReverseMap();
+            CreateMap<User, UserDto>().ForMember(u => u.Password, opt => opt.Ignore()).ReverseMap();
         }
     }
 }

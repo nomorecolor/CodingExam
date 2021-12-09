@@ -15,6 +15,7 @@ namespace CodingExam.Infrastructure.Repositories
         public override async Task<List<Interest>> GetAll()
         {
             return await Db.Interests
+                           .Include(i => i.User)
                            .Include(i => i.InterestDetails)
                            .OrderBy(i => i.Id)
                            .ToListAsync();
@@ -23,8 +24,18 @@ namespace CodingExam.Infrastructure.Repositories
         public override async Task<Interest> GetById(int id)
         {
             return await Db.Interests
+                           .Include(i => i.User)
                            .Include(i => i.InterestDetails)
                            .Where(i => i.Id == id)
+                           .FirstOrDefaultAsync();
+        }
+
+        public async Task<Interest> GetByUserId(int id)
+        {
+            return await Db.Interests
+                           .Include(i => i.User)
+                           .Include(i => i.InterestDetails)
+                           .Where(i => i.UserId == id)
                            .FirstOrDefaultAsync();
         }
 

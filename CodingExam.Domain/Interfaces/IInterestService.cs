@@ -8,6 +8,7 @@ namespace CodingExam.Domain.Interfaces
     {
         Task<List<Interest>> GetAll();
         Task<Interest> GetById(int id);
+        Task<Interest> GetByUserId(int id);
         Task<Interest> Add(Interest entity);
         Task<Interest> Update(Interest entity);
         Task<bool> Delete(Interest entity);

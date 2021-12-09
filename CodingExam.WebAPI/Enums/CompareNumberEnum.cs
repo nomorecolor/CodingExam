@@ -1,6 +1,6 @@
 ﻿namespace CodingExam.WebAPI.Enums
 {
-    public enum CompareNumberEnums
+    public enum CompareNumberEnum
     {
         Equal,
         GreaterThan,

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace CodingExam.Domain.Interfaces
 {
-    public interface IInterestRepository : IRepository<Interest>
+    public interface IAuthRepository
     {
-        Task<Interest> GetByUserId(int id);
+        Task<bool> ValidateLogin(User user);
     }
 }
