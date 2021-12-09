@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CodingExam.WebAPI.Dtos
 {
@@ -9,5 +10,8 @@ namespace CodingExam.WebAPI.Dtos
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
+        public string RefreshToken { get; set; }
+        public string AccessToken { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
     }
 }

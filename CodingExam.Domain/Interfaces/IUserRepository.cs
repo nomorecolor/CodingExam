@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace CodingExam.Domain.Interfaces
 {
-    public interface IInterestRepository : IRepository<Interest>
+    public interface IUserRepository : IRepository<User>
     {
-        Task<Interest> GetByUserId(int id);
+        Task<User> GetByUsername(string username);
     }
 }

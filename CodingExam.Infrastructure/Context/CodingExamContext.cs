@@ -18,6 +18,7 @@ namespace CodingExam.Infrastructure.Context
         public DbSet<Interest> Interests { get; set; }
         public DbSet<InterestDetails> InterestDetails { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserToken> UserTokens { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -56,8 +57,15 @@ namespace CodingExam.Infrastructure.Context
             {
                 entity.HasKey(u => u.Id);
 
+                entity.HasIndex(u => u.Username).IsUnique();
+
                 entity.Property(u => u.Username).IsRequired().HasColumnType("varchar(50)");
                 entity.Property(u => u.Password).IsRequired();
+            });
+
+            modelBuilder.Entity<UserToken>(entity =>
+            {
+                entity.HasKey(ut => ut.Id);
             });
         }
     }

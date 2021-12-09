@@ -30,6 +30,15 @@ namespace CodingExam.Infrastructure.Repositories
                            .FirstOrDefaultAsync();
         }
 
+        public async Task<Interest> GetByUserId(int id)
+        {
+            return await Db.Interests
+                           .Include(i => i.User)
+                           .Include(i => i.InterestDetails)
+                           .Where(i => i.UserId == id)
+                           .FirstOrDefaultAsync();
+        }
+
         public override async Task Update(Interest entity)
         {
             var interestDetails = Db.InterestDetails.Where(id => id.InterestId == entity.Id)

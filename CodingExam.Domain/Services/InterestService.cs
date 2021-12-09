@@ -25,6 +25,11 @@ namespace CodingExam.Domain.Services
             return await _interestRepository.GetById(id);
         }
 
+        public async Task<Interest> GetByUserId(int id)
+        {
+            return await _interestRepository.GetByUserId(id);
+        }
+
         public async Task<Interest> Add(Interest entity)
         {
             //var interestSearch = await Search(entity.Id);
