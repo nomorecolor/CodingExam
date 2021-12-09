@@ -11,9 +11,9 @@ namespace CodingExam.WebAPI.Validators
     public sealed class CompareNumber : ValidationAttribute
     {
         private string _fieldToCompare;
-        private CompareNumberEnums _enum;
+        private CompareNumberEnum _enum;
 
-        public CompareNumber(string fieldToCompare, CompareNumberEnums @enum)
+        public CompareNumber(string fieldToCompare, CompareNumberEnum @enum)
         {
             _fieldToCompare = fieldToCompare;
             _enum = @enum;
@@ -26,23 +26,23 @@ namespace CodingExam.WebAPI.Validators
 
             switch (_enum)
             {
-                case CompareNumberEnums.Equal:
+                case CompareNumberEnum.Equal:
                     if (Convert.ToDouble(value) == Convert.ToDouble(valueToCompare))
                         return null;
                     break;
-                case CompareNumberEnums.GreaterThan:
+                case CompareNumberEnum.GreaterThan:
                     if (Convert.ToDouble(value) > Convert.ToDouble(valueToCompare))
                         return null;
                     break;
-                case CompareNumberEnums.LessThan:
+                case CompareNumberEnum.LessThan:
                     if (Convert.ToDouble(value) < Convert.ToDouble(valueToCompare))
                         return null;
                     break;
-                case CompareNumberEnums.GreaterThanEqual:
+                case CompareNumberEnum.GreaterThanEqual:
                     if (Convert.ToDouble(value) >= Convert.ToDouble(valueToCompare))
                         return null;
                     break;
-                case CompareNumberEnums.LessThanEqual:
+                case CompareNumberEnum.LessThanEqual:
                     if (Convert.ToDouble(value) <= Convert.ToDouble(valueToCompare))
                         return null;
                     break;

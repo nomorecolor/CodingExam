@@ -13,11 +13,11 @@ namespace CodingExam.WebAPI.Dtos
         public decimal PresentValue { get; set; }
 
         [Required(ErrorMessage = "Lower Bound Interest Rate is required")]
-        [CompareNumber("UpperBoundInterestRate", CompareNumberEnums.LessThanEqual, ErrorMessage = "Lower Bound Interest Rate must be less than Upper Bound Interest Rate")]
+        [CompareNumber("UpperBoundInterestRate", CompareNumberEnum.LessThanEqual, ErrorMessage = "Lower Bound Interest Rate must be less than Upper Bound Interest Rate")]
         public decimal LowerBoundInterestRate { get; set; }
 
         [Required(ErrorMessage = "Upper Bound Interest Rate is required")]
-        [CompareNumber("LowerBoundInterestRate", CompareNumberEnums.GreaterThanEqual, ErrorMessage = "Upper Bound Interest Rate must be greater than Lower Bound Interest Rate")]
+        [CompareNumber("LowerBoundInterestRate", CompareNumberEnum.GreaterThanEqual, ErrorMessage = "Upper Bound Interest Rate must be greater than Lower Bound Interest Rate")]
         public decimal UpperBoundInterestRate { get; set; }
 
         [Required(ErrorMessage = "Incremental Rate is required")]
@@ -30,7 +30,9 @@ namespace CodingExam.WebAPI.Dtos
         [MinLength(1, ErrorMessage = "InterestDetails should not be empty")]
         public List<InterestDetailsDto> InterestDetails { get; set; }
 
+
         public UserDto User { get; set; }
+        public int UserId { get; set; }
 
         public InterestDto()
         {
