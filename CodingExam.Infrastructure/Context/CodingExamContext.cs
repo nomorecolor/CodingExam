@@ -17,6 +17,7 @@ namespace CodingExam.Infrastructure.Context
 
         public DbSet<Interest> Interests { get; set; }
         public DbSet<InterestDetails> InterestDetails { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

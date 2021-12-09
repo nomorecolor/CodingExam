@@ -13,8 +13,10 @@ namespace CodingExam.WebAPI.Configurations
             services.AddScoped<CodingExamContext>();
 
             services.AddScoped<IInterestRepository, InterestRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
             services.AddScoped<IInterestService, InterestService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }

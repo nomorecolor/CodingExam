@@ -20,10 +20,10 @@ namespace CodingExam.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Interests_User_UserId",
+                name: "FK_Interests_Users_UserId",
                 table: "Interests",
                 column: "UserId",
-                principalTable: "User",
+                principalTable: "Users",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -31,7 +31,7 @@ namespace CodingExam.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Interests_User_UserId",
+                name: "FK_Interests_Users_UserId",
                 table: "Interests");
 
             migrationBuilder.DropIndex(
