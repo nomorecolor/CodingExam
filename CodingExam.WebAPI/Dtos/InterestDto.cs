@@ -1,5 +1,5 @@
-﻿using CodingExam.WebAPI.Enums;
-using CodingExam.WebAPI.Validators;
+﻿using CodingExam.Common.Enums;
+using CodingExam.Common.Validators;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 

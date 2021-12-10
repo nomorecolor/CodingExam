@@ -1,8 +1,8 @@
-﻿using CodingExam.WebAPI.Enums;
+﻿using CodingExam.Common.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CodingExam.WebAPI.Validators
+namespace CodingExam.Common.Validators
 {
     [AttributeUsage(AttributeTargets.Field |
                    AttributeTargets.Property,
