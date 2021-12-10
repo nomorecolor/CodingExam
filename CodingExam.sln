@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingExam.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingExam.Domain", "CodingExam.Domain\CodingExam.Domain.csproj", "{F7E36F04-338A-4CA6-A0EE-91D1167AE19E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingExam.Test", "CodingExam.Test\CodingExam.Test.csproj", "{F739486A-D289-46BB-969E-02207B9831FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingExam.Test", "CodingExam.Test\CodingExam.Test.csproj", "{F739486A-D289-46BB-969E-02207B9831FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingExam.UI", "CodingExam.UI\CodingExam.UI.csproj", "{7CAB81EA-2F97-4013-A621-0645ED43077D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingExam.Common", "CodingExam.Common\CodingExam.Common.csproj", "{0672DC78-E444-4DA6-BEFE-ABCDE7CE188E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{F739486A-D289-46BB-969E-02207B9831FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F739486A-D289-46BB-969E-02207B9831FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F739486A-D289-46BB-969E-02207B9831FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CAB81EA-2F97-4013-A621-0645ED43077D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAB81EA-2F97-4013-A621-0645ED43077D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAB81EA-2F97-4013-A621-0645ED43077D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAB81EA-2F97-4013-A621-0645ED43077D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0672DC78-E444-4DA6-BEFE-ABCDE7CE188E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0672DC78-E444-4DA6-BEFE-ABCDE7CE188E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0672DC78-E444-4DA6-BEFE-ABCDE7CE188E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0672DC78-E444-4DA6-BEFE-ABCDE7CE188E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
