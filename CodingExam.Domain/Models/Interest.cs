@@ -16,6 +16,7 @@ namespace CodingExam.Domain.Models
         public Interest()
         {
             InterestDetails = new List<InterestDetails>();
+            User = new User();
         }
     }
 }
