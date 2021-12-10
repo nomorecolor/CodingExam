@@ -1,0 +1,40 @@
+﻿@model List<InterestDetailsViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">Year</th>
+            <th class="text-center">Present Value</th>
+            <th class="text-center">Interest Rate</th>
+            <th class="text-center">Future Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td class="text-center" colspan="4">No data</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.DisplayFor(m => item.Year)
+                    </td>
+                    <td class="text-end">
+                        @Html.DisplayFor(m => item.PresentValue)
+                    </td>
+                    <td class="text-end">
+                        @Html.DisplayFor(m => item.InterestRate)
+                    </td>
+                    <td class="text-end">
+                        @Html.DisplayFor(m => item.FutureValue)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

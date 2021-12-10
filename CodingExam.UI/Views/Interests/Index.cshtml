@@ -1,0 +1,96 @@
+﻿@model InterestViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="h-100 col-md-8 col-lg-4 mx-auto">
+    <div class="row my-3 col-2 ms-auto">
+        <a class="btn btn-danger" asp-action="Logout">Logout</a>
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.UserId)
+
+    <div class="row mb-3">
+        <strong class="form-label col-8 align-self-center">Present Value:</strong>
+        <div class="col-4">
+            <input class="form-control text-end"
+                   id="presentValue"
+                   asp-for="PresentValue"
+                   disabled
+                   type="number" />
+        </div>
+        <div>
+            <span asp-validation-for="PresentValue" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <strong class="form-label col-8 align-self-center">Lower Bound Interest Rate:</strong>
+        <div class="col-4">
+            <div class="input-group">
+                <input class="form-control text-end"
+                       id="lowerBoundInterestRate"
+                       asp-for="LowerBoundInterestRate"
+                       disabled
+                       type="number" />
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <strong class="form-label col-8 align-self-center">Upper Bound Interest Rate:</strong>
+        <div class="col-4">
+            <div class="input-group">
+                <input class="form-control text-end"
+                       id="upperBoundInterestRate"
+                       asp-for="UpperBoundInterestRate"
+                       disabled
+                       type="number" />
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <strong class="form-label col-8 align-self-center">Incremental Rate:</strong>
+        <div class="col-4">
+            <div class="input-group">
+                <input class="form-control text-end"
+                       id="incrementalRate"
+                       asp-for="IncrementalRate"
+                       disabled
+                       type="number" />
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <strong class="form-label col-8 align-self-center">Maturity Year(s):</strong>
+        <div class="col-4">
+            <input class="form-control text-end"
+                   id="maturityYears"
+                   asp-for="MaturityYears"
+                   disabled
+                   type="number" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <a id="save" class="btn btn-primary col-2 ms-auto me-2" asp-action="Edit" asp-route-id="@Model.Id">
+            Edit
+        </a>
+    </div>
+    <div id="interestDetailsArea">
+        @Html.Partial("InterestDetails/_InterestDetails", Model.InterestDetails)
+    </div>
+</div>
