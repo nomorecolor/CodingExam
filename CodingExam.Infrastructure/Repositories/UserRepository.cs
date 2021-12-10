@@ -16,6 +16,7 @@ namespace CodingExam.Infrastructure.Repositories
         public override async Task<User> GetById(int id)
         {
             return await Db.Users
+                           .Include(u => u.Interest)
                            .Where(u => u.Id == id)
                            .FirstOrDefaultAsync();
         }
@@ -23,6 +24,7 @@ namespace CodingExam.Infrastructure.Repositories
         public async Task<User> GetByUsername(string username)
         {
             return await Db.Users
+                           .Include(u => u.Interest)
                            .Where(u => u.Username == username)
                            .FirstOrDefaultAsync();
         }

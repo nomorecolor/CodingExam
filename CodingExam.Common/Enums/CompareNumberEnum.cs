@@ -1,4 +1,4 @@
-﻿namespace CodingExam.WebAPI.Enums
+﻿namespace CodingExam.Common.Enums
 {
     public enum CompareNumberEnum
     {

@@ -1,0 +1,49 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="
+    h-100
+    col-6 col-md-4 col-lg-3
+    mx-auto
+    d-flex
+    flex-column
+    justify-content-center
+  "
+     id="login-wrapper">
+    <form id="login-container" asp-action="Index">
+        <h1>Login</h1>
+        <hr />
+        <div class="row mb-3">
+            <strong for="username" class="form-label align-self-center mb-3">Username</strong>
+            <div class="col">
+                @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" }, })
+                <div>
+                    <small>
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <strong for="password" class="form-label align-self-center mb-3">Password</strong>
+            <div class="col">
+                @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", type = "password" }, })
+                <div>
+                    <small>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button id="save" class="btn btn-primary w-100">
+                    Login
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

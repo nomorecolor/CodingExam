@@ -69,5 +69,35 @@ namespace CodingExam.Domain.Services
         {
             return await _interestRepository.Search(u => u.Id == id);
         }
+
+        public void GenerateInterestDetails(Interest entity)
+        {
+            var currentValue = entity.PresentValue;
+            var currentRate = entity.LowerBoundInterestRate;
+
+            for (int x = 1; x <= entity.MaturityYears; x++)
+            {
+                var detail = new InterestDetails
+                {
+                    Year = x,
+                    PresentValue = currentValue,
+                    InterestRate = currentRate,
+                    FutureValue = (currentValue * (1 + (currentRate / 100)))
+                };
+
+                var futureRate = currentRate + entity.IncrementalRate;
+
+                // Add incremental rate to current rate
+                if (futureRate <= entity.UpperBoundInterestRate)
+                    currentRate = futureRate;
+                // Max out rate to upper bound
+                else
+                    currentRate = entity.UpperBoundInterestRate;
+
+                currentValue = detail.FutureValue;
+
+                entity.InterestDetails.Add(detail);
+            }
+        }
     }
 }
