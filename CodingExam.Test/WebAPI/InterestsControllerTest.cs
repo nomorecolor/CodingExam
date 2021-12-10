@@ -63,7 +63,8 @@ namespace CodingExam.Test.WebAPI
             var interest = InterestData.InterestList.FirstOrDefault(i => i.Id == id);
             var dtoExpected = MapObjectToDto(interest);
 
-            _interestServiceMock.Setup(x => x.GetById(id)).ReturnsAsync(interest);
+            _userServiceMock.Setup(x => x.GetById(id)).ReturnsAsync(new User());
+            _interestServiceMock.Setup(x => x.GetByUserId(id)).ReturnsAsync(interest);
             _mapperMock.Setup(x => x.Map<InterestDto>(It.IsAny<Interest>())).Returns(dtoExpected);
 
             var result = await _interestsController.GetByUserId(id);
@@ -72,13 +73,29 @@ namespace CodingExam.Test.WebAPI
         }
 
         [Theory]
-        [InlineData(3)]
-        [InlineData(4)]
-        public async void GetById_ShouldReturnOk_WhenInterestDoNotExist(int id)
+        [InlineData(1)]
+        [InlineData(2)]
+        public async void GetById_ShouldReturnBadRequest_WhenUserIsNull(int id)
         {
             var interest = InterestData.InterestList.FirstOrDefault(i => i.Id == id);
 
-            _interestServiceMock.Setup(x => x.GetById(id)).ReturnsAsync((Interest)null);
+            _userServiceMock.Setup(x => x.GetById(id)).ReturnsAsync((User)null);
+            _interestServiceMock.Setup(x => x.GetByUserId(id)).ReturnsAsync((Interest)null);
+
+            var result = await _interestsController.GetByUserId(id);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+
+        [Theory]
+        [InlineData(3)]
+        [InlineData(4)]
+        public async void GetById_ShouldReturnNotFound_WhenInterestDoNotExist(int id)
+        {
+            var interest = InterestData.InterestList.FirstOrDefault(i => i.Id == id);
+
+            _userServiceMock.Setup(x => x.GetById(id)).ReturnsAsync(new User());
+            _interestServiceMock.Setup(x => x.GetByUserId(id)).ReturnsAsync((Interest)null);
 
             var result = await _interestsController.GetByUserId(id);
 
